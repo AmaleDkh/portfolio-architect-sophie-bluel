@@ -294,6 +294,30 @@ footer nav li {
 	padding: 22px 125px 22px;
 }
 
+.edition-mode {
+	height: 59px;
+	background-color: black;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 12px;
+}
+
+#portfolio {
+	position: relative;
+}
+
+.modification-link {
+	position: absolute;
+	left: 690px;
+	top: 8px;
+	color: #000000;
+	display: flex;
+	gap: 12px;
+	text-decoration: none;
+}
+
 .buttons {
 	display: flex;
 	justify-content: center;

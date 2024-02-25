@@ -82,3 +82,17 @@ async function showFilters(listProjects) {
     const portfolio = document.querySelector("#portfolio");
     portfolio.insertBefore(filters, gallery);
 }
+
+// Token verification for user functionalities
+
+document.addEventListener("DOMContentLoaded", () => {
+    const token = localStorage.getItem("accessToken");
+
+    if (token) {
+        const editionMode = document.querySelector(".edition-mode");
+        editionMode.style.display = null;
+
+        const modificationLink = document.querySelector(".modification-link");
+        modificationLink.style.display = null;
+    }
+})
