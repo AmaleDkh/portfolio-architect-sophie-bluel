@@ -13,6 +13,7 @@
 	<link rel="stylesheet" href="./assets/styles/style.css">
 	<script src="https://kit.fontawesome.com/1b5d68cf6e.js" crossorigin="anonymous"></script>
 	<script type="module" src="./scripts/config.js"></script>
+	<script type="module" src="./scripts/modal.js"></script>
 </head>
 
 <body>
@@ -51,58 +52,25 @@
 		</section>
 
 		<section id="portfolio">
-
-			<a href="#" class="modification-link" style="display:none">
+			<a href="#modal" class="js-modal" style="display:none">
 				<i class="fa-regular fa-pen-to-square"></i>
 				modifier
 			</a>
 
+			<aside id="modal" class="modal" aria-hidden="true" role="dialog" style="display:none">
+				<div class="modal-wrapper-first-content js-modal-stop-propagation">
+					<div class="div-icon-close-modal">
+						<i class="fa-solid fa-xmark js-modal-close"></i>
+					</div>
+					<h3>Galerie photo</h3>
+					<div class="modal-gallery"></div>
+					<div class="horizontal-line"></div>
+					<button class="first-modal-add-photo">Ajouter une photo</button>
+				</div>
+			</aside>
+
 			<h2>Mes Projets</h2>
 			<div class="gallery">
-				<!-- <figure>
-					<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
-					<figcaption>Abajour Tahina</figcaption>
-				</figure>
-				<figure>
-					<img src="assets/images/appartement-paris-v.png" alt="Appartement Paris V">
-					<figcaption>Appartement Paris V</figcaption>
-				</figure>
-				<figure>
-					<img src="assets/images/restaurant-sushisen-londres.png" alt="Restaurant Sushisen - Londres">
-					<figcaption>Restaurant Sushisen - Londres</figcaption>
-				</figure>
-				<figure>
-					<img src="assets/images/la-balisiere.png" alt="Villa “La Balisiere” - Port Louis">
-					<figcaption>Villa “La Balisiere” - Port Louis</figcaption>
-				</figure>
-				<figure>
-					<img src="assets/images/structures-thermopolis.png" alt="Structures Thermopolis">
-					<figcaption>Structures Thermopolis</figcaption>
-				</figure>
-				<figure>
-					<img src="assets/images/appartement-paris-x.png" alt="Appartement Paris X">
-					<figcaption>Appartement Paris X</figcaption>
-				</figure>
-				<figure>
-					<img src="assets/images/le-coteau-cassis.png" alt="Pavillon “Le coteau” - Cassis">
-					<figcaption>Pavillon “Le coteau” - Cassis</figcaption>
-				</figure>
-				<figure>
-					<img src="assets/images/villa-ferneze.png" alt="Villa Ferneze - Isola d’Elba">
-					<figcaption>Villa Ferneze - Isola d’Elba</figcaption>
-				</figure>
-				<figure>
-					<img src="assets/images/appartement-paris-xviii.png" alt="Appartement Paris XVIII">
-					<figcaption>Appartement Paris XVIII</figcaption>
-				</figure>
-				<figure>
-					<img src="assets/images/bar-lullaby-paris.png" alt="Bar “Lullaby” - Paris">
-					<figcaption>Bar “Lullaby” - Paris</figcaption>
-				</figure>
-				<figure>
-					<img src="assets/images/hotel-first-arte-new-delhi.png" alt="Hotel First Arte - New Delhi">
-					<figcaption>Hotel First Arte - New Delhi</figcaption>
-				</figure> -->
 			</div>
 		</section>
 

@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const editionMode = document.querySelector(".edition-mode");
         editionMode.style.display = null;
 
-        const modificationLink = document.querySelector(".modification-link");
+        const modificationLink = document.querySelector(".js-modal");
         modificationLink.style.display = null;
     }
 })

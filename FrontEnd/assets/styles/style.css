@@ -308,7 +308,7 @@ footer nav li {
 	position: relative;
 }
 
-.modification-link {
+.js-modal {
 	position: absolute;
 	left: 690px;
 	top: 8px;
@@ -316,6 +316,89 @@ footer nav li {
 	display: flex;
 	gap: 12px;
 	text-decoration: none;
+}
+
+.modal {
+	position: fixed;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #0000004D;
+	animation: fadeIn 2s both;
+}
+
+.modal[aria-hidden="true"] {
+	animation: fadeOut 2s both;
+}
+
+.modal[aria-hidden="true"] .modal-wrapper-first-content {
+	animation: slideToBottom 1s both;
+}
+
+.modal-wrapper-first-content {
+	width: 630px;
+	height: 688px;
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	animation: slideFromTop 1s both;
+}
+
+.div-icon-close-modal {
+	width: 100%;
+	display: flex;
+	justify-content: end;
+	margin-bottom: 25px;
+}
+
+.fa-xmark {
+	margin-right: 25px;
+	cursor: pointer;
+}
+
+.modal-wrapper-first-content h3 {
+	font-size: 26px;
+	margin-bottom: 35px;
+}
+
+.modal-gallery {
+	width: 80%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+.project-in-modal {
+	width: 18%;
+}
+
+.project-in-modal img {
+	width: 100%;
+	margin: 7px 0;
+}
+
+.horizontal-line {
+	border-top: 1px solid #B3B3B3;
+	margin-top: 30px;
+	width: 80%;
+}
+
+.first-modal-add-photo {
+	font-family: 'Syne';
+	color: #FFFEF8;
+	background-color: #1D6154;
+	border-radius: 60px;
+	border: none;
+	padding: 10px 50px;
+	margin-top: 30px;
+	cursor: pointer;
 }
 
 .buttons {
@@ -342,4 +425,44 @@ footer nav li {
 .buttons button:hover {
 	background-color: #1D6154;
 	color: #FFFEF8;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes fadeOut {
+	from {
+		opacity: 1;
+	}
+
+	to {
+		opacity: 0;
+	}
+}
+
+@keyframes slideFromTop {
+	from {
+		transform: translateY(-50px);
+	}
+
+	to {
+		transform: translateY(0px);
+	}
+}
+
+@keyframes slideToBottom {
+	from {
+		transform: translateY(0px);
+	}
+
+	to {
+		transform: translateY(50px);
+	}
 }
