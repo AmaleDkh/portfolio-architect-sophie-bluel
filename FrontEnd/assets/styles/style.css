@@ -335,13 +335,10 @@ footer nav li {
 	animation: fadeOut 2s both;
 }
 
-.modal[aria-hidden="true"] .modal-wrapper-first-content {
-	animation: slideToBottom 1s both;
-}
-
-.modal-wrapper-first-content {
+.modal-wrapper {
 	width: 630px;
 	height: 688px;
+	padding: 22px 0 39px 0;
 	background-color: white;
 	display: flex;
 	flex-direction: column;
@@ -350,25 +347,32 @@ footer nav li {
 	animation: slideFromTop 1s both;
 }
 
-.div-icon-close-modal {
-	width: 100%;
-	display: flex;
-	justify-content: end;
-	margin-bottom: 25px;
+.modal[aria-hidden="true"] .modal-wrapper {
+	animation: slideToBottom 2s both;
 }
 
 .fa-xmark {
-	margin-right: 25px;
+	position: absolute;
+	top: 22px;
+	right: 22px;
 	cursor: pointer;
 }
 
-.modal-wrapper-first-content h3 {
+.fa-arrow-left {
+	position: absolute;
+	top: 25px;
+	left: 25px;
+	cursor: pointer;
+}
+
+.modal-title {
 	font-size: 26px;
-	margin-bottom: 35px;
+	margin-bottom: 39px;
 }
 
 .modal-gallery {
 	width: 80%;
+	margin: 18px 0;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
@@ -384,20 +388,93 @@ footer nav li {
 	margin: 7px 0;
 }
 
-.horizontal-line {
-	border-top: 1px solid #B3B3B3;
-	margin-top: 30px;
+.modal-add-new-project {
 	width: 80%;
 }
 
-.first-modal-add-photo {
+.part-add-new-photo {
+	background-color: #E8F1F6;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+	margin: 18px 0;
+}
+
+.fa-image {
+	font-size: 100px;
+	color: #B9C5CC;
+	padding-top: 20px;
+}
+
+.button-add-new-photo {
+	position: relative;
+	height: 36px;
+	width: 50%;
+	background-color: #CBD6DC;
+	border-radius: 60px;
+}
+
+.input-add-new-photo {
+	position: absolute;
+	opacity: 0;
+	height: 100%;
+	width: 100%;
+	cursor: pointer;
+}
+
+.text-add-new-photo {
+	width: 100%;
+	height: 100%;
+	color: #306685;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.specs-photo {
+	padding-bottom: 20px;
+}
+
+.modal-add-new-project form {
+	margin: 18px 0;
+	display: flex;
+	flex-direction: column;
+}
+
+#project-title,
+#project-category {
+	height: 50px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+form label {
+	margin: 2em 0 1em 0;
+}
+
+.horizontal-line {
+	border-top: 1px solid #B3B3B3;
+	margin-top: 39px;
+	width: 80%;
+}
+
+.button-add-photo {
 	font-family: 'Syne';
 	color: #FFFEF8;
 	background-color: #1D6154;
 	border-radius: 60px;
 	border: none;
 	padding: 10px 50px;
-	margin-top: 30px;
+	margin-top: 50px;
+	cursor: pointer;
+}
+
+.modal-wrapper input[type="submit"] {
+	margin: 50px 0 0 0;
+	border: none;
+	padding: 10px 50px;
 	cursor: pointer;
 }
 

@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     linkOpenModal.addEventListener("click", openModal);
 
     showProject();
+    showSecondModal();
 })
 
 let modal = null;
@@ -93,4 +94,25 @@ async function showProject() {
         const divShowProjectModal = document.querySelector(".modal-gallery");
         divShowProjectModal.append(projectInModal);
     }
+}
+
+// Second content in modal
+
+function showSecondModal() {
+    const firstModal = document.querySelector(".button-add-photo");
+    firstModal.addEventListener("click", () => {
+        const titleModal = document.querySelector(".modal-title");
+        titleModal.innerText = "Ajout photo";
+        const modalGallery = document.querySelector(".modal-gallery");
+        modalGallery.style.display = "none";
+        const buttonAddPhoto = document.querySelector(".button-add-photo");
+        buttonAddPhoto.style.display = "none";
+
+        const arrowLeft = document.querySelector(".fa-arrow-left");
+        arrowLeft.style.display = null;
+        const secondModal = document.querySelector(".modal-add-new-project");
+        secondModal.style.display = null;
+        const inputProjectSubmit = document.querySelector(".input-project-submit");
+        inputProjectSubmit.style.display = null;
+    })
 }
