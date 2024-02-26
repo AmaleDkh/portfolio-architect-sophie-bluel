@@ -25,9 +25,7 @@ function handleLogin() {
             })
             .then(data => {
                 localStorage.setItem("accessToken", data.token);
-
                 window.location.href = 'index.html';
-
             })
             .catch(error => {
                 console.error(error);

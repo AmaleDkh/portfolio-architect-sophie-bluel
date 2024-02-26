@@ -381,11 +381,23 @@ footer nav li {
 
 .project-in-modal {
 	width: 18%;
+	position: relative;
 }
 
 .project-in-modal img {
 	width: 100%;
 	margin: 7px 0;
+}
+
+.fa-trash-can {
+	position: absolute;
+	top: 14px;
+	right: 7px;
+	color: white;
+	background-color: black;
+	padding: 5px;
+	border-radius: 2px;
+	cursor: pointer;
 }
 
 .modal-add-new-project {

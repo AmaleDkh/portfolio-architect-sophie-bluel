@@ -87,9 +87,19 @@ async function showProject() {
         const imageProject = document.createElement("img");
         imageProject.src = projectImageUrl;
 
+        const iconDeleteProject = document.createElement("i");
+        iconDeleteProject.setAttribute("class", "fa-solid fa-trash-can");
+
+        iconDeleteProject.addEventListener("click", (e) => {
+            e.preventDefault();
+            deleteProject(response[i].id);
+        })
+
         const projectInModal = document.createElement("div");
         projectInModal.setAttribute("class", "project-in-modal");
+        projectInModal.setAttribute("id", response[i].id);
         projectInModal.append(imageProject);
+        projectInModal.append(iconDeleteProject)
 
         const divShowProjectModal = document.querySelector(".modal-gallery");
         divShowProjectModal.append(projectInModal);
@@ -115,4 +125,24 @@ function showSecondModal() {
         const inputProjectSubmit = document.querySelector(".input-project-submit");
         inputProjectSubmit.style.display = null;
     })
+}
+
+// Projects deleting
+
+function deleteProject(id) {
+    const token = localStorage.getItem("accessToken");
+
+    fetch(`http://localhost:5678/api/works/${id}`, {
+        method: "DELETE",
+        headers: { 'Authorization': `Bearer ${token}` }
+    })
+        .then(() => {
+            const projectInPortfolio = document.getElementById(`${id}`);
+            if (projectInPortfolio) {
+                projectInPortfolio.remove();
+                alert("Suppression du projet réussie");
+            } else {
+                alert("Erreur lors de suppression du projet");
+            }
+        })
 }
