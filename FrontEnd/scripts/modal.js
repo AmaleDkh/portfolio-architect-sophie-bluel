@@ -120,10 +120,12 @@ function showSecondModal() {
 
         const arrowLeft = document.querySelector(".fa-arrow-left");
         arrowLeft.style.display = null;
-        const secondModal = document.querySelector(".modal-add-new-project");
-        secondModal.style.display = null;
+        const formInModal = document.querySelector(".modal-add-new-project");
+        formInModal.style.display = null;
         const inputProjectSubmit = document.querySelector(".input-project-submit");
         inputProjectSubmit.style.display = null;
+
+        backToGalleryModal();
     })
 }
 
@@ -145,4 +147,25 @@ function deleteProject(id) {
                 alert("Erreur lors de suppression du projet");
             }
         })
+}
+
+// Back to the gallery in modal
+
+function backToGalleryModal() {
+    const arrowLeft = document.querySelector(".fa-arrow-left");
+    arrowLeft.addEventListener("click", () => {
+        const arrowLeft = document.querySelector(".fa-arrow-left");
+        arrowLeft.style.display = "none";
+        const titleModal = document.querySelector(".modal-title");
+        titleModal.innerText = "Galerie photo";
+        const formInModal = document.querySelector(".modal-add-new-project");
+        formInModal.style.display = "none";
+        const inputProjectSubmit = document.querySelector(".input-project-submit");
+        inputProjectSubmit.style.display = "none";
+       
+        const modalGallery = document.querySelector(".modal-gallery");
+        modalGallery.style.display = null;
+        const buttonAddPhoto = document.querySelector(".button-add-photo");
+        buttonAddPhoto.style.display = null;
+    })
 }
