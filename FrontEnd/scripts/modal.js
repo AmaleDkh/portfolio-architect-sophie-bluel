@@ -127,6 +127,7 @@ function showSecondModal() {
 
         backToGalleryModal();
         choiceCategory();
+        addNewPhoto();
     })
 }
 
@@ -163,7 +164,7 @@ function backToGalleryModal() {
         formInModal.style.display = "none";
         const inputProjectSubmit = document.querySelector(".input-project-submit");
         inputProjectSubmit.style.display = "none";
-       
+
         const modalGallery = document.querySelector(".modal-gallery");
         modalGallery.style.display = null;
         const buttonAddPhoto = document.querySelector(".button-add-photo");
@@ -176,9 +177,9 @@ function backToGalleryModal() {
 async function choiceCategory() {
     const url = "http://localhost:5678/api/categories";
     const categoriesData = await fetch(url).then(response => response.json());
-    
+
     const inputSelectCategory = document.querySelector("#project-category");
-    
+
     const firstCategory = document.createElement("option");
     firstCategory.innerText = "Sélectionnez une catégorie";
     inputSelectCategory.append(firstCategory);
@@ -190,4 +191,32 @@ async function choiceCategory() {
         optionCategory.append(categoryDataName);
         inputSelectCategory.append(optionCategory);
     }
+}
+
+// New photo adding
+
+function addNewPhoto() {
+    const titleAddPhoto = document.querySelector(".button-add-new-photo");
+    titleAddPhoto.addEventListener("change", (e) => {
+        const newPhotoSelected = e.target.files[0];
+        const readerPhoto = new FileReader();
+
+        readerPhoto.addEventListener("load", (e) => {
+            const newPhotoLoaded = e.target.result;
+
+            const newPhoto = document.querySelector(".new-photo");
+            newPhoto.src = newPhotoLoaded;
+            newPhoto.style.display = null;
+
+            const iconPhoto = document.querySelector(".fa-image");
+            iconPhoto.style.display = "none";
+            const secondModalAddPhoto = document.querySelector(".button-add-new-photo");
+            secondModalAddPhoto.style.display = "none";
+            const specsPhoto = document.querySelector(".specs-photo");
+            specsPhoto.style.display = "none";
+        })
+        if (newPhotoSelected) {
+            readerPhoto.readAsDataURL(newPhotoSelected);
+        }
+    })
 }

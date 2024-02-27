@@ -405,12 +405,17 @@ footer nav li {
 }
 
 .part-add-new-photo {
+	height: 210px;
 	background-color: #E8F1F6;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	gap: 10px;
 	margin: 18px 0;
+}
+
+.part-add-new-photo img {
+	height: 100%;
 }
 
 .fa-image {
