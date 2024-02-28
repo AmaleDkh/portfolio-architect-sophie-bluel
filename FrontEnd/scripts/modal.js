@@ -122,9 +122,13 @@ function showSecondModal() {
         formInModal.style.display = null;
 
         backToGalleryModal();
-        choiceCategory();
         addNewPhoto();
         addNewProject();
+
+        const selectCategories = document.querySelectorAll("#project-category option")
+        if (selectCategories.length === 0) {
+            choiceCategory();
+        }
     })
 }
 
@@ -256,3 +260,4 @@ function addNewProject() {
         }
     })
 }
+
