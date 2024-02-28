@@ -94,5 +94,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const modificationLink = document.querySelector(".js-modal");
         modificationLink.style.display = null;
+
+        const headerNavLinkLogin = document.querySelector(".header-nav-link-login");
+        headerNavLinkLogin.style.display = "none";
+        const headerNavLinkLogout = document.querySelector(".header-nav-link-logout");
+        headerNavLinkLogout.style.display = null;
     }
 })
