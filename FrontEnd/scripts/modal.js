@@ -115,19 +115,16 @@ function showSecondModal() {
         titleModal.innerText = "Ajout photo";
         const modalGallery = document.querySelector(".modal-gallery-add-project");
         modalGallery.style.display = "none";
-        // const buttonAddPhoto = document.querySelector(".button-add-photo");
-        // buttonAddPhoto.style.display = "none";
 
         const arrowLeft = document.querySelector(".fa-arrow-left");
         arrowLeft.style.display = null;
         const formInModal = document.querySelector(".modal-add-new-project");
         formInModal.style.display = null;
-        // const inputProjectSubmit = document.querySelector(".input-project-submit");
-        // inputProjectSubmit.style.display = null;
 
         backToGalleryModal();
         choiceCategory();
         addNewPhoto();
+        addNewProject();
     })
 }
 
@@ -213,6 +210,49 @@ function addNewPhoto() {
         })
         if (newPhotoSelected) {
             readerPhoto.readAsDataURL(newPhotoSelected);
+        }
+    })
+}
+
+function addNewProject() {
+    const submitForm = document.querySelector(".modal-form");
+    submitForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const titleNewProject = document.querySelector("#project-title").value;
+        const categoryNewProject = document.querySelectorAll("#project-category option:checked")[0].id;
+        const photoNewProject = document.querySelector(".input-add-new-photo").files[0];
+
+        const array = []
+        if (titleNewProject === '') {
+            array.push('titre')
+        }
+        if (categoryNewProject === '') {
+            array.push('catégorie')
+        }
+        if (photoNewProject === undefined) {
+            array.push('image')
+        }
+
+        if (array.length === 0) {
+            const inputProjectSubmit = document.querySelector(".input-project-submit")
+            inputProjectSubmit.style.backgroundColor = '#1D6154';
+
+            const newProjectData = new FormData();
+            newProjectData.append("image", photoNewProject);
+            newProjectData.append("title", titleNewProject);
+            newProjectData.append("category", categoryNewProject);
+
+            const token = localStorage.getItem("accessToken");
+            fetch('http://localhost:5678/api/works', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                },
+                body: newProjectData
+            })
+        } else {
+            alert("Il manque : " + array.join(", "));
         }
     })
 }
