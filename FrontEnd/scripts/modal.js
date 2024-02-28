@@ -113,17 +113,17 @@ function showSecondModal() {
     firstModal.addEventListener("click", () => {
         const titleModal = document.querySelector(".modal-title");
         titleModal.innerText = "Ajout photo";
-        const modalGallery = document.querySelector(".modal-gallery");
+        const modalGallery = document.querySelector(".modal-gallery-add-project");
         modalGallery.style.display = "none";
-        const buttonAddPhoto = document.querySelector(".button-add-photo");
-        buttonAddPhoto.style.display = "none";
+        // const buttonAddPhoto = document.querySelector(".button-add-photo");
+        // buttonAddPhoto.style.display = "none";
 
         const arrowLeft = document.querySelector(".fa-arrow-left");
         arrowLeft.style.display = null;
         const formInModal = document.querySelector(".modal-add-new-project");
         formInModal.style.display = null;
-        const inputProjectSubmit = document.querySelector(".input-project-submit");
-        inputProjectSubmit.style.display = null;
+        // const inputProjectSubmit = document.querySelector(".input-project-submit");
+        // inputProjectSubmit.style.display = null;
 
         backToGalleryModal();
         choiceCategory();
@@ -162,13 +162,9 @@ function backToGalleryModal() {
         titleModal.innerText = "Galerie photo";
         const formInModal = document.querySelector(".modal-add-new-project");
         formInModal.style.display = "none";
-        const inputProjectSubmit = document.querySelector(".input-project-submit");
-        inputProjectSubmit.style.display = "none";
 
-        const modalGallery = document.querySelector(".modal-gallery");
+        const modalGallery = document.querySelector(".modal-gallery-add-project");
         modalGallery.style.display = null;
-        const buttonAddPhoto = document.querySelector(".button-add-photo");
-        buttonAddPhoto.style.display = null;
     })
 }
 
