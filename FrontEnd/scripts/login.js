@@ -1,6 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
-    handleLogin();
+    handLoginOnLoginPage();
+    logOut();
 })
+
+function handLoginOnLoginPage() {
+    if (window.location.href.includes('login.html')) {
+        handleLogin();
+    }
+}
 
 function handleLogin() {
     const logInForm = document.querySelector(".login-form");
@@ -33,3 +40,14 @@ function handleLogin() {
             })
     })
 }
+
+function logOut() {
+    const headerNavLinkLogOut = document.querySelector(".header-nav-link-logout");
+    if (headerNavLinkLogOut) {
+        headerNavLinkLogOut.addEventListener("click", () => {
+            localStorage.removeItem("accessToken");
+            location.reload();
+        })
+    }
+}
+
