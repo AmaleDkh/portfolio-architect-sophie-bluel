@@ -66,7 +66,6 @@ const focusInModal = function (e) {
 }
 
 window.addEventListener("keydown", function (e) {
-    e.preventDefault();
     if (e.key === "Escape" || e.key === "Esc") {
         closeModal(e);
     }
