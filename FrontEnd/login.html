@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <link rel="stylesheet" href="./assets/styles/style.css">
     <link rel="stylesheet" href="./assets/styles/login.css">
-    <script src="./scripts/login.js"></script>
+    <script type="module" src="./scripts/login.js"></script>
 </head>
 
 <body>
@@ -34,10 +34,13 @@
             <form action="#" method="post" class="login-form">
                 <label for="email">E-mail </label>
                 <input type="email" name="email" id="email">
+                <div id="login-form-error-1" class="login-error" style="display:none"></div>
                 <label for="password">Mot de passe</label>
                 <input type="password" name="password" id="password">
+                <div id="login-form-error-2" class="login-error" style="display:none"></div>
                 <input type="submit" value="Se connecter">
             </form>
+            <div id="login-form-error" class="login-error" style="display:none"></div>
             <a href="#" class="forgotten-password">Mot de passe oublié</a>
         </section>
     </main>
