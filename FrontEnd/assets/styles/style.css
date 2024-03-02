@@ -376,11 +376,11 @@ footer nav li {
 
 .modal-title {
 	font-size: 26px;
-	margin-bottom: 39px;
+	margin-bottom: 57px;
 }
 
 .modal-gallery {
-	margin: 18px 0;
+	margin-bottom: 18px;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
@@ -419,7 +419,6 @@ footer nav li {
 	flex-direction: column;
 	align-items: center;
 	gap: 10px;
-	margin: 18px 0;
 }
 
 .part-add-new-photo img {
@@ -457,7 +456,7 @@ footer nav li {
 }
 
 .modal-add-new-project form {
-	margin: 18px 0;
+	margin: 18px 0 0;
 	display: flex;
 	flex-direction: column;
 }
@@ -470,8 +469,15 @@ footer nav li {
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
-#project-category {
-	margin-bottom: 26px;
+#modal-form-error-1,
+#modal-form-error-2,
+#modal-form-error-3 {
+	color: red;
+}
+
+#modal-form-error-1,
+#modal-form-error-2 {
+	margin-top: 10px;
 }
 
 form label {
@@ -496,7 +502,7 @@ form label {
 }
 
 .modal-wrapper input[type="submit"] {
-	margin: 50px auto 0 auto;
+	margin: 52px auto 0;
 	border: none;
 	padding: 10px 50px;
 	background-color: #A7A7A7;

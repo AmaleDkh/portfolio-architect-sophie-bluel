@@ -80,15 +80,18 @@
 								<input type="file" class="input-add-new-photo">
 								<p class="text-add-new-photo">+ Ajouter photo</p>
 							</div>
+							<div id="modal-form-error-3" class="error" style="display:none"></div>
 							<span class="specs-photo">jpg, png : 4mo max</span>
 						</div>
 
 						<form class="modal-form" enctype="multipart/form-data">
 							<label for="project-title">Titre</label>
 							<input type="text" name="project-title" id="project-title">
+							<div id="modal-form-error-1" class="error" style="display:none"></div>
 							<label for="project-category">Catégorie</label>
 							<select name="project-category" id="project-category">
 							</select>
+							<div id="modal-form-error-2" class="error" style="display:none"></div>
 							<div class="horizontal-line"></div>
 							<input type="submit" class="input-project-submit" value="Valider">
 						</form>

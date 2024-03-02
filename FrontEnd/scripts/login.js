@@ -1,4 +1,4 @@
-import { hideErrors } from "./error-handling.js"
+import { hideErrors } from "./errors-handling.js"
 
 document.addEventListener('DOMContentLoaded', () => {
     handLoginOnLoginPage();
@@ -20,7 +20,6 @@ function handleLogin() {
         event.preventDefault();
 
         const email = document.querySelector('input[name="email"]').value;
-
         const password = document.querySelector('input[name="password"]').value;
 
         const errors = [];
