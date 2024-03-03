@@ -7,6 +7,7 @@ export async function choiceCategory() {
     const inputSelectCategory = document.querySelector("#project-category");
 
     const firstCategory = document.createElement("option");
+    firstCategory.setAttribute("id", 0);
     firstCategory.innerText = "Sélectionnez une catégorie";
     inputSelectCategory.append(firstCategory);
 

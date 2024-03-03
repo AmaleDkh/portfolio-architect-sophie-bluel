@@ -1,6 +1,7 @@
 import { addNewPhoto } from './new-project-add-photo.js';
 import { choiceCategory } from './new-project-select-category.js';
 import { addNewProject } from './new-project-creation.js';
+import { buttonSubmitProject } from './new-project-button-submit.js';
 
 // Project creation form
 
@@ -20,6 +21,7 @@ export function showProjectCreationForm() {
         backToGalleryModal();
         addNewPhoto();
         addNewProject();
+        buttonSubmitProject();
 
         const selectCategories = document.querySelectorAll("#project-category option");
         if (selectCategories.length === 0) {
