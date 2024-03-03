@@ -1,17 +1,17 @@
-import { hideErrors } from "./errors-handling.js"
+import { hideErrors } from "./errors-handling.js";
 
 document.addEventListener('DOMContentLoaded', () => {
-    handLoginOnLoginPage();
-    logOut();
+    handleLoginOnLoginPage();
+    handlelogOut();
 })
 
-function handLoginOnLoginPage() {
+function handleLoginOnLoginPage() {
     if (window.location.href.includes('login.html')) {
         handleLogin();
     }
 }
 
-// Login 
+// Handle login 
 
 function handleLogin() {
     const logInForm = document.querySelector(".login-form");
@@ -38,7 +38,7 @@ function handleLogin() {
                     body: JSON.stringify({ email, password })
                 })
 
-                const data = response.json();
+                const data = await response.json();
 
                 if (response.status !== 200) {
                     throw new Error;
@@ -64,9 +64,9 @@ function handleLogin() {
     })
 }
 
-// Logout
+// Handle logout
 
-function logOut() {
+function handlelogOut() {
     const headerNavLinkLogOut = document.querySelector(".header-nav-link-logout");
     if (headerNavLinkLogOut) {
         headerNavLinkLogOut.addEventListener("click", () => {
@@ -75,4 +75,3 @@ function logOut() {
         })
     }
 }
-
