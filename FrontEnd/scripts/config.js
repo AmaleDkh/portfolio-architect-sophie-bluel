@@ -12,6 +12,7 @@ async function init() {
 async function fetchWorks() {
     const url = 'http://localhost:5678/api/works';
     const response = await fetch(url).then(response => response.json());
+    localStorage.setItem("stockedResponse", JSON.stringify(response));
     return response;
 }
 
@@ -25,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
         editionMode.style.display = null;
         const modificationLink = document.querySelector(".js-modal");
         modificationLink.style.display = null;
-        
+
         const headerNavLinkLogin = document.querySelector(".header-nav-link-login");
         headerNavLinkLogin.style.display = "none";
         const headerNavLinkLogout = document.querySelector(".header-nav-link-logout");

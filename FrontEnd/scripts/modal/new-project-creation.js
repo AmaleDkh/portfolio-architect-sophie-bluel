@@ -4,7 +4,7 @@ import { hideErrors } from "../errors-handling.js";
 
 export function addNewProject() {
     const submitForm = document.querySelector(".modal-form");
-    submitForm.addEventListener("submit", (event) => {
+    submitForm.addEventListener("submit", async (event) => {
         event.preventDefault();
 
         const titleNewProject = document.querySelector("#project-title").value;
@@ -15,7 +15,7 @@ export function addNewProject() {
         if (titleNewProject === '') {
             errors.push({ text: "titre", id: "modal-form-error-1" });
         }
-        if (categoryNewProject === '') {
+        if (categoryNewProject === '0') {
             errors.push({ text: "catégorie", id: "modal-form-error-2" });
         }
         if (photoNewProject === undefined) {
@@ -32,13 +32,17 @@ export function addNewProject() {
             newProjectData.append("category", categoryNewProject);
 
             const token = localStorage.getItem("accessToken");
-            fetch('http://localhost:5678/api/works', {
+            const response = await fetch('http://localhost:5678/api/works', {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,
                 },
                 body: newProjectData
             })
+            const responseData = await response.json();
+            const listProjects = JSON.parse(localStorage.getItem("stockedResponse"));
+            listProjects.push(responseData);
+            localStorage.setItem("stockedResponse", JSON.stringify(listProjects));  
         } else {
             errors.forEach((error) => {
                 const divError = document.getElementById(error.id);
