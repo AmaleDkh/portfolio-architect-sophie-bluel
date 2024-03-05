@@ -383,8 +383,7 @@ footer nav li {
 	margin-bottom: 18px;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
-	gap: 12px;
+	gap: 12.5px;
 }
 
 .project-in-modal {
@@ -431,6 +430,11 @@ footer nav li {
 	padding-top: 20px;
 }
 
+.label-new-photo {
+	width: 30%;
+	height: 100%;
+}
+
 .button-add-new-photo {
 	position: relative;
 	height: 36px;
@@ -467,6 +471,11 @@ footer nav li {
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+#project-category {
+	font-family: 'Work Sans';
+	font-size: 14px;
 }
 
 #modal-form-error-1,

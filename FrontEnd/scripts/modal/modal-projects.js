@@ -4,6 +4,10 @@ import { deleteProject } from "./project-deleting.js";
 
 export async function showModalProjects() {
     const listProjects = JSON.parse(localStorage.getItem("stockedResponse"));
+
+    const divShowProjectModal = document.querySelector(".modal-gallery");
+    divShowProjectModal.innerHTML = '';
+
     for (let i = 0; i < listProjects.length; i++) {
         const projectImageUrl = listProjects[i].imageUrl;
 
@@ -16,6 +20,7 @@ export async function showModalProjects() {
         const projectInModal = document.createElement("div");
         projectInModal.setAttribute("class", "project-in-modal");
         projectInModal.setAttribute("id", listProjects[i].id);
+        projectInModal.setAttribute("data-work-id", listProjects[i].id);
         projectInModal.append(imageProject);
         projectInModal.append(iconDeleteProject);
 

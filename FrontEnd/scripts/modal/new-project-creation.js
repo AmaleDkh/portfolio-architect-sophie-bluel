@@ -1,5 +1,7 @@
 import { hideErrors } from "../errors-handling.js";
 import { handleErrors } from "../errors-handling.js";
+import { showProjects } from "../homepage/homepage-projects.js";
+import { showModalProjects } from "./modal-projects.js";
 
 // New project adding
 
@@ -61,6 +63,8 @@ function updateListProjects(responseData) {
     const listProjects = JSON.parse(localStorage.getItem("stockedResponse"));
     listProjects.push(responseData);
     localStorage.setItem("stockedResponse", JSON.stringify(listProjects));
+    showProjects(listProjects);
+    showModalProjects(listProjects);
 }
 
 // Check potential errors on input

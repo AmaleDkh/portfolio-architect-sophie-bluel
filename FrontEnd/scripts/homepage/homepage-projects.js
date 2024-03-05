@@ -2,11 +2,9 @@
 
 export async function showProjects(listProjects) {
     const portfolioProjects = document.querySelector("#portfolio");
-    const gallery = document.querySelector(".gallery");
 
-    while (gallery.firstChild) {
-        gallery.removeChild(gallery.firstChild);
-    }
+    const gallery = document.querySelector(".gallery");
+    gallery.innerHTML = '';
 
     for (let i = 0; i < listProjects.length; i++) {
         const img = listProjects[i].imageUrl;
@@ -19,9 +17,10 @@ export async function showProjects(listProjects) {
         titleProject.append(title);
 
         const project = document.createElement("figure");
+        project.setAttribute("id", listProjects[i].id);
+        project.setAttribute("data-word-id", listProjects[i].id);
         project.append(imgProject);
         project.append(titleProject);
-        project.setAttribute("id", listProjects[i].id);
 
         gallery.append(project);
         portfolioProjects.append(gallery);
