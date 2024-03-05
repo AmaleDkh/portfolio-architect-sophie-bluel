@@ -11,7 +11,8 @@ export function addNewPhoto() {
 
             const newPhoto = document.querySelector(".new-photo");
             newPhoto.src = newPhotoLoaded;
-            newPhoto.style.display = null;
+            const labelPhoto = document.querySelector(".label-new-photo");
+            labelPhoto.style.display = null;
 
             const iconPhoto = document.querySelector(".fa-image");
             iconPhoto.style.display = "none";

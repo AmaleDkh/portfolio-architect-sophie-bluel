@@ -75,9 +75,12 @@
 					<div class="modal-add-new-project" style="display:none">
 						<div class="part-add-new-photo">
 							<i class="fa-regular fa-image"></i>
-							<img class="new-photo" style="display:none">
+							<label for="project-new-photo" class="label-new-photo" style="display:none">
+								<img class="new-photo">
+							</label>
 							<div class="button-add-new-photo">
-								<input type="file" class="input-add-new-photo">
+								<input type="file" name="project-new-photo" id="project-new-photo"
+									class="input-add-new-photo" accept="image/jpeg, image/png">
 								<p class="text-add-new-photo">+ Ajouter photo</p>
 							</div>
 							<div id="modal-form-error-3" class="error" style="display:none"></div>
