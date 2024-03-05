@@ -30,12 +30,13 @@ function closeModal(e) {
     modal.removeEventListener("click", closeModal);
     modal.querySelector(".js-modal-close").removeEventListener("click", closeModal);
     modal.querySelector(".js-modal-stop-propagation").removeEventListener("click", stopPropagation);
-    const hideModal = function () {
-        modal.style.display = "none";
-        modal.removeEventListener("animationend", hideModal);
-        modal = null;
-    }
     modal.addEventListener("animationend", hideModal);
+}
+
+function hideModal() {
+    modal.style.display = "none";
+    modal.removeEventListener("animationend", hideModal);
+    modal = null;
 }
 
 function stopPropagation(e) {

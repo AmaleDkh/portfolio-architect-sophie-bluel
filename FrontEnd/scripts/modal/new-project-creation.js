@@ -1,4 +1,5 @@
 import { hideErrors } from "../errors-handling.js";
+import { handleErrors } from "../errors-handling.js";
 
 // New project adding
 
@@ -11,44 +12,13 @@ export function addNewProject() {
         const categoryNewProject = document.querySelectorAll("#project-category option:checked")[0].id;
         const photoNewProject = document.querySelector(".input-add-new-photo").files[0];
 
-        const errors = []
-        if (titleNewProject === '') {
-            errors.push({ text: "titre", id: "modal-form-error-1" });
-        }
-        if (categoryNewProject === '0') {
-            errors.push({ text: "catégorie", id: "modal-form-error-2" });
-        }
-        if (photoNewProject === undefined) {
-            errors.push({ text: "photo", id: "modal-form-error-3" });
-        }
+        const errors = checkErrors(photoNewProject, titleNewProject, categoryNewProject);
 
         if (errors.length === 0) {
-            const inputProjectSubmit = document.querySelector(".input-project-submit");
-            inputProjectSubmit.style.backgroundColor = '#1D6154';
-
-            const newProjectData = new FormData();
-            newProjectData.append("image", photoNewProject);
-            newProjectData.append("title", titleNewProject);
-            newProjectData.append("category", categoryNewProject);
-
-            const token = localStorage.getItem("accessToken");
-            const response = await fetch('http://localhost:5678/api/works', {
-                method: 'POST',
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                },
-                body: newProjectData
-            })
-            const responseData = await response.json();
-            const listProjects = JSON.parse(localStorage.getItem("stockedResponse"));
-            listProjects.push(responseData);
-            localStorage.setItem("stockedResponse", JSON.stringify(listProjects));  
+            const responseData = await handleSubmit(photoNewProject, titleNewProject, categoryNewProject);
+            updateListProjects(responseData);
         } else {
-            errors.forEach((error) => {
-                const divError = document.getElementById(error.id);
-                divError.style.display = null;
-                divError.innerText = "L'information " + error.text + " est manquante";
-            })
+            handleErrors(errors);
 
             const faImage = document.querySelector(".fa-image");
             faImage.style.paddingTop = "8px";
@@ -61,4 +31,51 @@ export function addNewProject() {
             hideErrors();
         }, true);
     })
+}
+
+// Create a new project and validate form
+
+async function handleSubmit(photo, title, category) {
+    const inputProjectSubmit = document.querySelector(".input-project-submit");
+    inputProjectSubmit.style.backgroundColor = '#1D6154';
+
+    const newProjectData = new FormData();
+    newProjectData.append("image", photo);
+    newProjectData.append("title", title);
+    newProjectData.append("category", category);
+
+    const token = localStorage.getItem("accessToken");
+    const response = await fetch('http://localhost:5678/api/works', {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+        },
+        body: newProjectData
+    })
+    return response.json();
+}
+
+// Update projects list in local storage
+
+function updateListProjects(responseData) {
+    const listProjects = JSON.parse(localStorage.getItem("stockedResponse"));
+    listProjects.push(responseData);
+    localStorage.setItem("stockedResponse", JSON.stringify(listProjects));
+}
+
+// Check potential errors on input
+
+function checkErrors(photo, title, category) {
+    const errors = [];
+
+    if (title === '') {
+        errors.push({ text: "titre", id: "modal-form-error-1" });
+    }
+    if (category === '0') {
+        errors.push({ text: "catégorie", id: "modal-form-error-2" });
+    }
+    if (photo === undefined) {
+        errors.push({ text: "photo", id: "modal-form-error-3" });
+    }
+    return errors;
 }
