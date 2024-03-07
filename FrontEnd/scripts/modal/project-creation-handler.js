@@ -1,7 +1,7 @@
-import { addNewPhoto } from './new-project-add-photo.js';
-import { choiceCategory } from './new-project-select-category.js';
-import { addNewProject } from './new-project-creation.js';
-import { buttonSubmitProject } from './new-project-button-submit.js';
+import { addNewPhoto } from '../works/new-project-add-photo.js';
+import { choiceCategory } from '../works/new-project-select-category.js';
+import { addNewProject } from '../works/new-project-creation.js';
+import { buttonSubmitProject } from '../works/new-project-button-submit.js';
 
 // Project creation form
 

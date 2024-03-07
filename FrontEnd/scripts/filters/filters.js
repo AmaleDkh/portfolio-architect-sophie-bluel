@@ -1,4 +1,4 @@
-import { showProjects } from ".//homepage-projects.js";
+import { showProjects } from "../gallery/gallery.js";
 
 // Projects filtered 
 

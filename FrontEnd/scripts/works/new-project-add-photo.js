@@ -1,4 +1,4 @@
-// New photo adding
+// // New photo adding
 
 export function addNewPhoto() {
     const titleAddPhoto = document.querySelector(".button-add-new-photo");

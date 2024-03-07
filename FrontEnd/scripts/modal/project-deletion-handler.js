@@ -1,4 +1,4 @@
-import { showProjects } from "../homepage/homepage-projects.js";
+import { showProjects } from "../gallery/gallery.js";
 
 // Projects deleting
 

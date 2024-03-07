@@ -1,14 +1,10 @@
-import { hideErrors } from "./errors-handling.js";
-import { handleErrors } from "./errors-handling.js";
-
-document.addEventListener('DOMContentLoaded', () => {
-    handleLoginOnLoginPage();
-    handlelogOut();
-})
+import { checkErrorsLogin } from "../utils/utils.js";
+import { hideErrors } from "../utils/utils.js";
+import { handleErrors } from "../utils/utils.js";
 
 // Handle login on login page
 
-function handleLoginOnLoginPage() {
+export function handleLoginOnLoginPage() {
     if (window.location.href.includes('login.html')) {
         handleLogin();
     }
@@ -24,7 +20,7 @@ function handleLogin() {
         const email = document.querySelector('input[name="email"]').value;
         const password = document.querySelector('input[name="password"]').value;
 
-        const errors = checkErrors(email, password);
+        const errors = checkErrorsLogin(email, password);
 
         try {
             if (errors.length === 0) {
@@ -45,7 +41,7 @@ function handleLogin() {
 
 // Handle logout
 
-function handlelogOut() {
+export function handleLogOut() {
     const headerNavLinkLogOut = document.querySelector(".header-nav-link-logout");
     if (headerNavLinkLogOut) {
         headerNavLinkLogOut.addEventListener("click", () => {
@@ -69,19 +65,6 @@ async function submitLogin(email, password) {
     }
 
     return response.json();
-}
-
-// Check potential errors on input
-
-function checkErrors(email, password) {
-    const errors = [];
-    if (email === '') {
-        errors.push({ text: "e-mail", id: "login-form-error-1" });
-    }
-    if (password === '') {
-        errors.push({ text: "mot de passe", id: "login-form-error-2" });
-    }
-    return errors;
 }
 
 // Show message when username and password doesn't match

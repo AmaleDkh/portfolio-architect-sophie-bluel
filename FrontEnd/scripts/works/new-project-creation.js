@@ -1,7 +1,8 @@
-import { hideErrors } from "../errors-handling.js";
-import { handleErrors } from "../errors-handling.js";
-import { showProjects } from "../homepage/homepage-projects.js";
-import { showModalProjects } from "./modal-projects.js";
+import { checkErrorsNewProject } from "../utils/utils.js";
+import { hideErrors } from "../utils/utils.js";
+import { handleErrors } from "../utils/utils.js";
+import { showProjects } from "../gallery/gallery.js";
+import { showModalProjects } from "../modal/modal-gallery.js";
 
 // New project adding
 
@@ -14,7 +15,7 @@ export function addNewProject() {
         const categoryNewProject = document.querySelectorAll("#project-category option:checked")[0].id;
         const photoNewProject = document.querySelector(".input-add-new-photo").files[0];
 
-        const errors = checkErrors(photoNewProject, titleNewProject, categoryNewProject);
+        const errors = checkErrorsNewProject(photoNewProject, titleNewProject, categoryNewProject);
 
         if (errors.length === 0) {
             const responseData = await handleSubmit(photoNewProject, titleNewProject, categoryNewProject);
@@ -65,21 +66,4 @@ function updateListProjects(responseData) {
     localStorage.setItem("stockedResponse", JSON.stringify(listProjects));
     showProjects(listProjects);
     showModalProjects(listProjects);
-}
-
-// Check potential errors on input
-
-function checkErrors(photo, title, category) {
-    const errors = [];
-
-    if (title === '') {
-        errors.push({ text: "titre", id: "modal-form-error-1" });
-    }
-    if (category === '0') {
-        errors.push({ text: "catégorie", id: "modal-form-error-2" });
-    }
-    if (photo === undefined) {
-        errors.push({ text: "photo", id: "modal-form-error-3" });
-    }
-    return errors;
 }
