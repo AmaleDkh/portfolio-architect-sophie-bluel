@@ -42,7 +42,7 @@ function handleLogin() {
 // Handle logout
 
 export function handleLogOut() {
-    const headerNavLinkLogOut = document.querySelector(".header-nav-link-logout");
+    const headerNavLinkLogOut = document.querySelector("#header-nav-link-logout");
     if (headerNavLinkLogOut) {
         headerNavLinkLogOut.addEventListener("click", () => {
             localStorage.removeItem("accessToken");
