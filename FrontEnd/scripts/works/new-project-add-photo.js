@@ -1,3 +1,5 @@
+import { handleAlerts } from "../alerts.js/alerts-handler.js";
+
 // New photo adding
 
 export function addNewPhoto() {
@@ -10,14 +12,14 @@ export function addNewPhoto() {
         }
 
         if (!(newPhotoSelected.type === "image/jpeg" || newPhotoSelected.type === "image/png")) {
-            alert("Le format de la photo n'est pas adapté");
-            return;
+            handleAlerts("error", "Échec lors du chargement", "Le format de la photo n'est pas adapté. Veuillez réessayer.", false, "", false, "", true, 6000);
+            return
         }
 
         const maxSize = 4 * 1024 * 1014;
         if (newPhotoSelected.size > maxSize) {
-            alert("La taille de la photo n'est pas adaptée");
-            return;
+            handleAlerts("error", "Échec lors du chargement", "La taille de la photo n'est pas adaptée. Veuillez réessayer.", false, "", false, "", true, 6000);
+            return
         }
 
         const readerPhoto = new FileReader();

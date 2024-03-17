@@ -553,6 +553,70 @@ form label {
 	color: #FFFEF8;
 }
 
+/* alerts */
+
+.swal2-popup {
+	background-color: #FFFEF8;
+	color: black;
+	padding: 36px 0;
+}
+
+.swal2-icon-content {
+	color: red;
+}
+
+.swal2-icon.swal2-warning {
+	border-color: red;
+}
+
+.swal2-icon {
+	margin-top: 0;
+}
+
+.swal2-title {
+	font-family: 'Work Sans';
+	font-size: 26px;
+}
+
+.swal2-container .swal2-html-container {
+	font-size: 14px;
+}
+
+.swal2-container button.swal2-styled.swal2-cancel,
+.swal2-container button.swal2-styled.swal2-confirm {
+	font-family: 'Syne';
+	color: #FFFEF8;
+	border-radius: 60px;
+	padding: 10px 30px;
+	cursor: pointer;
+}
+
+.swal2-container button.swal2-styled.swal2-confirm {
+	background-color: #1D6154;
+	margin: 0 10px 0 0;
+}
+
+.swal2-container button.swal2-styled.swal2-confirm:focus {
+	box-shadow: none;
+}
+
+.swal2-container button.swal2-styled.swal2-cancel {
+	background-color: #A7A7A7;
+	margin: 0 0 0 10px;
+}
+
+.swal2-container button.swal2-close {
+	font-size: 20px;
+	color: black;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+
+.swal2-container button.swal2-close:focus {
+	box-shadow: none;
+}
+
 @keyframes fadeIn {
 	from {
 		opacity: 0;

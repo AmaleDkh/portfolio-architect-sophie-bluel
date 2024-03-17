@@ -1,6 +1,7 @@
 import { checkErrorsNewProject, hideErrors, handleErrors } from "../utils/utils.js";
 import { showProjects } from "../gallery/gallery.js";
 import { showModalProjects } from "../modal/modal-gallery.js";
+import { handleAlerts } from "../alerts.js/alerts-handler.js";
 
 // New project adding
 
@@ -24,7 +25,9 @@ export function addNewProject() {
 
             return
         }
+
         const responseData = await handleSubmit(photoNewProject, titleNewProject, categoryNewProject);
+        handleAlerts("success", "Nouveau projet ajouté", "", false, "", false, "", true, 6000);
         updateListProjects(responseData);
     })
 }
