@@ -343,8 +343,8 @@ footer nav li {
 .modal-wrapper {
 	width: 630px;
 	height: 688px;
-	padding: 22px 0 39px 0;
 	background-color: white;
+	border-radius: 10px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -376,7 +376,7 @@ footer nav li {
 
 .modal-title {
 	font-size: 26px;
-	margin-bottom: 57px;
+	margin-bottom: 36px;
 }
 
 .modal-gallery {
@@ -417,7 +417,7 @@ footer nav li {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 10px;
+	gap: 15px;
 }
 
 .part-add-new-photo img {
@@ -427,7 +427,7 @@ footer nav li {
 .fa-image {
 	font-size: 100px;
 	color: #B9C5CC;
-	padding-top: 20px;
+	padding-top: 12px;
 }
 
 .label-new-photo {
@@ -460,9 +460,9 @@ footer nav li {
 }
 
 .modal-add-new-project form {
-	margin: 18px 0 0;
 	display: flex;
 	flex-direction: column;
+	position: relative;
 }
 
 #project-title,
@@ -481,16 +481,25 @@ footer nav li {
 #modal-form-error-1,
 #modal-form-error-2,
 #modal-form-error-3 {
+	position: absolute;
+	margin-top: 6px;
 	color: red;
 }
 
-#modal-form-error-1,
+#modal-form-error-1 {
+	top: 115px;
+}
+
 #modal-form-error-2 {
-	margin-top: 10px;
+	top: 228px;
+}
+
+#modal-form-error-3 {
+	top: 310px;
 }
 
 form label {
-	margin: 2em 0 1em 0;
+	margin: 2.5em 0 1em 0;
 }
 
 .horizontal-line {
@@ -505,13 +514,13 @@ form label {
 	border-radius: 60px;
 	border: none;
 	padding: 10px 50px;
-	margin: 50px auto 0 auto;
+	margin: 36px auto 0 auto;
 	display: flex;
 	cursor: pointer;
 }
 
 .modal-wrapper input[type="submit"] {
-	margin: 52px auto 0;
+	margin: 36px auto 0;
 	border: none;
 	padding: 10px 50px;
 	background-color: #A7A7A7;

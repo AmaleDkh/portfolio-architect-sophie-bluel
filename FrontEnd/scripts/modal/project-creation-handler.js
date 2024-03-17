@@ -24,9 +24,10 @@ export function showProjectCreationForm() {
         buttonSubmitProject();
 
         const selectCategories = document.querySelectorAll("#project-category option");
-        if (selectCategories.length === 0) {
-            choiceCategory();
+        if (selectCategories.length !== 0) {
+            return
         }
+        choiceCategory();
     })
 }
 

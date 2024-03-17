@@ -1,9 +1,13 @@
-// // New photo adding
+// New photo adding
 
 export function addNewPhoto() {
     const titleAddPhoto = document.querySelector(".button-add-new-photo");
     titleAddPhoto.addEventListener("change", (e) => {
         const newPhotoSelected = e.target.files[0];
+
+        if (!newPhotoSelected) {
+            return
+        }
 
         if (!(newPhotoSelected.type === "image/jpeg" || newPhotoSelected.type === "image/png")) {
             alert("Le format de la photo n'est pas adapté");
@@ -34,8 +38,6 @@ export function addNewPhoto() {
             specsPhoto.style.display = "none";
         })
 
-        if (newPhotoSelected) {
-            readerPhoto.readAsDataURL(newPhotoSelected);
-        }
+        readerPhoto.readAsDataURL(newPhotoSelected);
     })
 }

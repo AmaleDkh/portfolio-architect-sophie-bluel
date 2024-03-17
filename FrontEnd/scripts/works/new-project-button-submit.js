@@ -1,3 +1,5 @@
+// Handle color submit button
+
 export function buttonSubmitProject() {
     const changedElements = [];
 
@@ -5,7 +7,7 @@ export function buttonSubmitProject() {
     photoNewProject.addEventListener("change", () => {
         if (!changedElements.includes("Changed photo")) {
             changedElements.push("Changed photo");
-            checkButtonSubmit();
+            checkButtonSubmit(changedElements);
         }
     })
 
@@ -13,13 +15,13 @@ export function buttonSubmitProject() {
     titleNewProject.addEventListener("input", () => {
         if (!changedElements.includes("Changed title") && titleNewProject.value.trim() !== '') {
             changedElements.push("Changed title");
-            checkButtonSubmit();
+            checkButtonSubmit(changedElements);
         }
 
-        if (titleNewProject.value == '') {
+        if (titleNewProject.value === '') {
             const titleIndex = changedElements.indexOf("Changed title");
             changedElements.splice(titleIndex, 1);
-            checkButtonSubmit();
+            checkButtonSubmit(changedElements);
         }
     })
 
@@ -27,24 +29,24 @@ export function buttonSubmitProject() {
     categoryNewProject.addEventListener("change", () => {
         if (!changedElements.includes("Changed category")) {
             changedElements.push("Changed category");
-            checkButtonSubmit();
+            checkButtonSubmit(changedElements);
         }
 
         const category = document.querySelector("#project-category option:checked");
         if (category.id === '0') {
             const categoryIndex = changedElements.indexOf("Changed category");
             changedElements.splice(categoryIndex, 1);
-            checkButtonSubmit();
+            checkButtonSubmit(changedElements);
         }
     })
+}
 
-    function checkButtonSubmit() {
-        if (changedElements.length === 3) {
-            const inputProjectSubmit = document.querySelector(".input-project-submit");
-            inputProjectSubmit.style.backgroundColor = '#1D6154';
-        } else {
-            const inputProjectSubmit = document.querySelector(".input-project-submit");
-            inputProjectSubmit.style.backgroundColor = '#A7A7A7';
-        }
+function checkButtonSubmit(changedElements) {
+    if (changedElements.length === 3) {
+        const inputProjectSubmit = document.querySelector(".input-project-submit");
+        inputProjectSubmit.style.backgroundColor = '#1D6154';
+    } else {
+        const inputProjectSubmit = document.querySelector(".input-project-submit");
+        inputProjectSubmit.style.backgroundColor = '#A7A7A7';
     }
 }

@@ -5,6 +5,7 @@ main {
 #login {
     width: 50%;
     margin: 150px auto;
+    position: relative;
 }
 
 #login>* {
@@ -27,18 +28,29 @@ main {
 }
 
 #login label {
-    margin: 2em 0 1em 0;
+    margin: 2.5em 0 1em 0;
 }
 
 #login-form-error {
+    width: 100%;
     color: red;
-    margin-bottom: 33.6px;
+    position: absolute;
+    top: 48px;
 }
 
 #login-form-error-1,
 #login-form-error-2 {
     color: red;
-    margin-top: 10px;
+    margin-top: 6px;
+    position: absolute;
+}
+
+#login-form-error-1 {
+    top: 175px;
+}
+
+#login-form-error-2 {
+    top: 290px;
 }
 
 .forgotten-password {

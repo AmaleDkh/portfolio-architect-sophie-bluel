@@ -1,6 +1,4 @@
-import { checkErrorsNewProject } from "../utils/utils.js";
-import { hideErrors } from "../utils/utils.js";
-import { handleErrors } from "../utils/utils.js";
+import { checkErrorsNewProject, hideErrors, handleErrors } from "../utils/utils.js";
 import { showProjects } from "../gallery/gallery.js";
 import { showModalProjects } from "../modal/modal-gallery.js";
 
@@ -17,22 +15,17 @@ export function addNewProject() {
 
         const errors = checkErrorsNewProject(photoNewProject, titleNewProject, categoryNewProject);
 
-        if (errors.length === 0) {
-            const responseData = await handleSubmit(photoNewProject, titleNewProject, categoryNewProject);
-            updateListProjects(responseData);
-        } else {
+        if (errors.length !== 0) {
             handleErrors(errors);
 
-            const faImage = document.querySelector(".fa-image");
-            faImage.style.paddingTop = "8px";
-            const selectCategory = document.querySelector("#project-category");
-            selectCategory.style.marginBottom = "0";
-            const inputProjectSubmit = document.querySelector(".input-project-submit");
-            inputProjectSubmit.style.marginTop = "38px";
+            document.addEventListener("click", () => {
+                hideErrors();
+            }, true);
+
+            return
         }
-        document.addEventListener("click", () => {
-            hideErrors();
-        }, true);
+        const responseData = await handleSubmit(photoNewProject, titleNewProject, categoryNewProject);
+        updateListProjects(responseData);
     })
 }
 
