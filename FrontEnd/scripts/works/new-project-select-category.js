@@ -1,8 +1,9 @@
-// Get API categories for select options
+import { fetchCategories } from "../api-requests/api-requests.js";
+
+// Show select options with categories
 
 export async function choiceCategory() {
-    const url = "http://localhost:5678/api/categories";
-    const categoriesData = await fetch(url).then(response => response.json());
+    const listCategories = await fetchCategories();
 
     const inputSelectCategory = document.querySelector("#project-category");
 
@@ -11,10 +12,10 @@ export async function choiceCategory() {
     firstCategory.innerText = "Sélectionnez une catégorie";
     inputSelectCategory.append(firstCategory);
 
-    for (let i = 0; i < categoriesData.length; i++) {
-        const categoryDataName = categoriesData[i].name;
+    for (let i = 0; i < listCategories.length; i++) {
+        const categoryDataName = listCategories[i].name;
         const optionCategory = document.createElement("option");
-        optionCategory.setAttribute("id", categoriesData[i].id);
+        optionCategory.setAttribute("id", listCategories[i].id);
         optionCategory.append(categoryDataName);
         inputSelectCategory.append(optionCategory);
     }

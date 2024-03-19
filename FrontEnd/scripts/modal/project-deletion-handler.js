@@ -1,35 +1,60 @@
+import { fetchDeleteProject } from "../api-requests/api-requests.js";
 import { showProjects } from "../gallery/gallery.js";
-import { handleAlerts } from "../alerts.js/alerts-handler.js";
+import { handleAlerts } from "../utils/alerts.js";
 
-// Projects deleting
+// Delete project
 
 export async function deleteProject(id) {
-    const token = localStorage.getItem("accessToken");
+    try {
+        const result = await handleAlerts(
+            "warning",
+            "Êtes-vous sûr.e ?",
+            "Le projet sera supprimé définitivement.",
+            true,
+            "Valider",
+            true,
+            "Annuler",
+            false
+        );
 
-    const response = await fetch(`http://localhost:5678/api/works/${id}`, {
-        method: "DELETE",
-        headers: { 'Authorization': `Bearer ${token}` }
-    });
+        if (!result.isConfirmed) {
+            return
+        }
 
-    if (!response.ok) {
-        return
-    }
+        await fetchDeleteProject(id);
 
-    const projectInPortfolio = document.querySelector(`[data-work-id="${id}"]`);
+        const projectInPortfolio = document.querySelector(`[data-work-id="${id}"]`);
+        projectInPortfolio.remove();
 
-    if (!projectInPortfolio) {
-        handleAlerts("error", "Échec lors de suppression", "Une erreur s'est produite. Veuillez réessayer.", false, "", false, "", true, 6000);
-        return
-    }
+        const listProjects = JSON.parse(localStorage.getItem("stockedResponse"));
+        const updatedListProjects = listProjects.filter(project => project.id !== id);
+        localStorage.setItem("stockedResponse", JSON.stringify(updatedListProjects));
 
-    projectInPortfolio.remove();
-    const listProjects = JSON.parse(localStorage.getItem("stockedResponse"));
-    const updatedListProjects = listProjects.filter(project => project.id !== id);
-    localStorage.setItem("stockedResponse", JSON.stringify(updatedListProjects));
-    showProjects(updatedListProjects);
+        showProjects(updatedListProjects);
 
-    const result = await handleAlerts("warning", "Êtes-vous sûr.e ?", "Le projet sera supprimé définitivement.", true, "Valider", true, "Annuler", false);
-    if (result.isConfirmed) {
-        await handleAlerts("success", "Projet supprimé", "", false, "", false, "", true, 6000);
+        await handleAlerts(
+            "success",
+            "Projet supprimé",
+            "",
+            false,
+            "",
+            false,
+            "",
+            true,
+            6000
+        );
+
+    } catch {
+        handleAlerts(
+            "error",
+            "Échec lors de suppression",
+            "Une erreur s'est produite. Veuillez réessayer.",
+            false,
+            "",
+            false,
+            "",
+            true,
+            6000
+        );
     }
 }

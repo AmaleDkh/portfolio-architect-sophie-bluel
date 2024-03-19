@@ -1,14 +1,15 @@
-import { checkErrorsNewProject, hideErrors, handleErrors } from "../utils/utils.js";
+import { fetchNewProject } from "../api-requests/api-requests.js";
 import { showProjects } from "../gallery/gallery.js";
 import { showModalProjects } from "../modal/modal-gallery.js";
-import { handleAlerts } from "../alerts.js/alerts-handler.js";
+import { checkErrorsNewProject, hideErrors, handleErrors } from "../utils/utils.js";
+import { handleAlerts } from "../utils/alerts.js";
 
-// New project adding
+// Add new project
 
 export function addNewProject() {
     const submitForm = document.querySelector(".modal-form");
-    submitForm.addEventListener("submit", async (event) => {
-        event.preventDefault();
+    submitForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
 
         const titleNewProject = document.querySelector("#project-title").value;
         const categoryNewProject = document.querySelectorAll("#project-category option:checked")[0].id;
@@ -26,39 +27,49 @@ export function addNewProject() {
             return
         }
 
-        const responseData = await handleSubmit(photoNewProject, titleNewProject, categoryNewProject);
-        handleAlerts("success", "Nouveau projet ajouté", "", false, "", false, "", true, 6000);
-        updateListProjects(responseData);
+        const newProjectData = new FormData();
+        newProjectData.append("image", photoNewProject);
+        newProjectData.append("title", titleNewProject);
+        newProjectData.append("category", categoryNewProject);
+
+        try {
+            const responseNewProject = await fetchNewProject(newProjectData);
+
+            handleAlerts(
+                "success",
+                "Nouveau projet ajouté",
+                "",
+                false,
+                "",
+                false,
+                "",
+                true,
+                6000
+            );
+
+            updateListProjects(responseNewProject);
+
+        } catch {
+            handleAlerts(
+                "error",
+                "Échec lors de l'ajout",
+                "Une erreur s'est produite. Veuillez réessayer.",
+                false,
+                "",
+                false,
+                "",
+                true,
+                6000
+            );
+        }
     })
-}
-
-// Create a new project and validate form
-
-async function handleSubmit(photo, title, category) {
-    const inputProjectSubmit = document.querySelector(".input-project-submit");
-    inputProjectSubmit.style.backgroundColor = '#1D6154';
-
-    const newProjectData = new FormData();
-    newProjectData.append("image", photo);
-    newProjectData.append("title", title);
-    newProjectData.append("category", category);
-
-    const token = localStorage.getItem("accessToken");
-    const response = await fetch('http://localhost:5678/api/works', {
-        method: 'POST',
-        headers: {
-            'Authorization': `Bearer ${token}`,
-        },
-        body: newProjectData
-    })
-    return response.json();
 }
 
 // Update projects list in local storage
 
-function updateListProjects(responseData) {
+function updateListProjects(response) {
     const listProjects = JSON.parse(localStorage.getItem("stockedResponse"));
-    listProjects.push(responseData);
+    listProjects.push(response);
     localStorage.setItem("stockedResponse", JSON.stringify(listProjects));
     showProjects(listProjects);
     showModalProjects(listProjects);

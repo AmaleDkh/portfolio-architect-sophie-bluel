@@ -14,14 +14,6 @@ export function checkErrorsLogin(email, password) {
     return errors;
 }
 
-// Show message when username and password doesn't match
-
-export function showLoginError() {
-    const divErrorLogin = document.getElementById("login-form-error");
-    divErrorLogin.style.display = null;
-    divErrorLogin.innerText = "La combinaison utilisateur / mot de passe est peut-être incorrecte. \nVeuillez réessayer.";
-}
-
 // Check potential errors on input new project
 
 export function checkErrorsNewProject(photo, title, category) {
@@ -42,6 +34,16 @@ export function checkErrorsNewProject(photo, title, category) {
     return errors;
 }
 
+// Handle errors 
+
+export function handleErrors(errors) {
+    errors.forEach((error) => {
+        const divError = document.getElementById(error.id);
+        divError.style.display = null;
+        divError.innerText = "L'information " + error.text + " est manquante";
+    })
+}
+
 // Hide errors
 
 export function hideErrors() {
@@ -52,15 +54,5 @@ export function hideErrors() {
             return
         }
         divError.style.display = "none";
-    })
-}
-
-// Handle errors 
-
-export function handleErrors(errors) {
-    errors.forEach((error) => {
-        const divError = document.getElementById(error.id);
-        divError.style.display = null;
-        divError.innerText = "L'information " + error.text + " est manquante";
     })
 }

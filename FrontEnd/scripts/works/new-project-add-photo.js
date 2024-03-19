@@ -1,6 +1,6 @@
-import { handleAlerts } from "../alerts.js/alerts-handler.js";
+import { handleAlerts } from "../utils/alerts.js";
 
-// New photo adding
+// Add new photo
 
 export function addNewPhoto() {
     const titleAddPhoto = document.querySelector(".button-add-new-photo");
@@ -12,13 +12,35 @@ export function addNewPhoto() {
         }
 
         if (!(newPhotoSelected.type === "image/jpeg" || newPhotoSelected.type === "image/png")) {
-            handleAlerts("error", "Échec lors du chargement", "Le format de la photo n'est pas adapté. Veuillez réessayer.", false, "", false, "", true, 6000);
+            handleAlerts(
+                "error",
+                "Échec lors du chargement",
+                "Le format de la photo n'est pas adapté. Veuillez réessayer.",
+                false,
+                "",
+                false,
+                "",
+                true,
+                6000
+            );
+
             return
         }
 
         const maxSize = 4 * 1024 * 1014;
         if (newPhotoSelected.size > maxSize) {
-            handleAlerts("error", "Échec lors du chargement", "La taille de la photo n'est pas adaptée. Veuillez réessayer.", false, "", false, "", true, 6000);
+            handleAlerts(
+                "error",
+                "Échec lors du chargement",
+                "La taille de la photo n'est pas adaptée. Veuillez réessayer.",
+                false,
+                "",
+                false,
+                "",
+                true,
+                6000
+            );
+
             return
         }
 

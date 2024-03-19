@@ -1,4 +1,6 @@
-import { checkErrorsLogin, showLoginError, hideErrors, handleErrors } from "../utils/utils.js";
+import { fetchLogin } from "../api-requests/api-requests.js";
+import { checkErrorsLogin, hideErrors, handleErrors } from "../utils/utils.js";
+import { handleAlerts } from "../utils/alerts.js";
 
 // Handle login on login page
 
@@ -13,28 +15,42 @@ export function handleLoginOnLoginPage() {
 
 function handleLogin() {
     const logInForm = document.querySelector(".login-form");
-    logInForm.addEventListener("submit", async (event) => {
-        event.preventDefault();
+    logInForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
 
         const email = document.querySelector('input[name="email"]').value;
         const password = document.querySelector('input[name="password"]').value;
 
         const errors = checkErrorsLogin(email, password);
 
-        try {
-            if (errors.length === 0) {
-                const responseData = await submitLogin(email, password);
-                localStorage.setItem("accessToken", responseData.token);
-                window.location.href = 'index.html';
-            } else {
-                handleErrors(errors);
-            }
-        } catch {
-            showLoginError();
+        if (errors.length !== 0) {
+            handleErrors(errors);
+
+            document.addEventListener("click", () => {
+                hideErrors();
+            })
+
+            return
         }
-        document.addEventListener("click", () => {
-            hideErrors();
-        })
+
+        try {
+            const responseLogin = await fetchLogin(email, password);
+            localStorage.setItem("accessToken", responseLogin.token);
+            window.location.href = 'index.html';
+
+        } catch {
+            handleAlerts(
+                "error",
+                "Échec lors de la connexion",
+                "La combinaison utilisateur / mot de passe est peut-être incorrecte. Veuillez réessayer.",
+                false,
+                "",
+                false,
+                "",
+                true,
+                6000
+            );
+        }
     })
 }
 
@@ -49,20 +65,4 @@ export function handleLogOut() {
         localStorage.removeItem("accessToken");
         location.reload();
     })
-}
-
-// Handle submit login form
-
-async function submitLogin(email, password) {
-    const response = await fetch('http://localhost:5678/api/users/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
-    })
-
-    if (response.status !== 200) {
-        throw new Error;
-    }
-
-    return response.json();
 }
