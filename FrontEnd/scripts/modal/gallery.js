@@ -5,17 +5,22 @@ import { deleteProject } from "./project-deletion-handler.js";
 export async function showModalProjects() {
     const listProjects = JSON.parse(localStorage.getItem("stockedResponse"));
 
-    const divShowProjectModal = document.querySelector(".modal-gallery");
-    divShowProjectModal.innerHTML = '';
+    const divModalWithGallery = document.querySelector(".modal-gallery");
+    divModalWithGallery.innerHTML = '';
 
     for (let i = 0; i < listProjects.length; i++) {
-        const projectImageUrl = listProjects[i].imageUrl;
+        const imgUrlProject = listProjects[i].imageUrl;
 
         const imageProject = document.createElement("img");
-        imageProject.src = projectImageUrl;
+        imageProject.src = imgUrlProject;
 
         const iconDeleteProject = document.createElement("i");
         iconDeleteProject.setAttribute("class", "fa-solid fa-trash-can");
+
+        iconDeleteProject.addEventListener("click", (e) => {
+            e.preventDefault();
+            deleteProject(listProjects[i].id);
+        })
 
         const projectInModal = document.createElement("div");
         projectInModal.setAttribute("class", "project-in-modal");
@@ -24,12 +29,6 @@ export async function showModalProjects() {
         projectInModal.append(imageProject);
         projectInModal.append(iconDeleteProject);
 
-        const divShowProjectModal = document.querySelector(".modal-gallery");
-        divShowProjectModal.append(projectInModal);
-
-        iconDeleteProject.addEventListener("click", (e) => {
-            e.preventDefault();
-            deleteProject(listProjects[i].id);
-        })
+        divModalWithGallery.append(projectInModal);  
     }
 }

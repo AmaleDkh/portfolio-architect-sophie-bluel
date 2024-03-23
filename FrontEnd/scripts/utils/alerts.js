@@ -1,4 +1,4 @@
-export async function handleAlerts(
+export async function showAlert(
     icon,
     title,
     text,

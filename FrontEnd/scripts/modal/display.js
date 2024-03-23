@@ -3,7 +3,7 @@ const focusableSelector = 'a, button, input, textarea';
 let focusableElements = [];
 let previouslyFocusedElement = null;
 
-// Modal opening 
+// Open modal
 
 export function openModal(e) {
     e.preventDefault();
@@ -19,7 +19,7 @@ export function openModal(e) {
     modal.querySelector(".js-modal-stop-propagation").addEventListener("click", stopPropagation);
 }
 
-// Modal closing 
+// Close modal
 
 function closeModal(e) {
     if (modal === null) return

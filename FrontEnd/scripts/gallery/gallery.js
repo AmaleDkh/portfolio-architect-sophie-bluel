@@ -1,8 +1,6 @@
 // Projects presented
 
 export async function showProjects(listProjects) {
-    const portfolioProjects = document.querySelector("#portfolio");
-
     const gallery = document.querySelector(".gallery");
     gallery.innerHTML = '';
 
@@ -23,6 +21,5 @@ export async function showProjects(listProjects) {
         project.append(titleProject);
 
         gallery.append(project);
-        portfolioProjects.append(gallery);
     }
 }

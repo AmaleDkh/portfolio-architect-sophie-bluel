@@ -7,6 +7,7 @@ import { buttonSubmitProject } from '../works/new-project-button-submit.js';
 
 export function showProjectCreationForm() {
     const firstModal = document.querySelector(".button-add-photo");
+
     firstModal.addEventListener("click", () => {
         const titleModal = document.querySelector(".modal-title");
         titleModal.innerText = "Ajout photo";
@@ -35,6 +36,7 @@ export function showProjectCreationForm() {
 
 function backToGalleryModal() {
     const arrowLeft = document.querySelector(".fa-arrow-left");
+    
     arrowLeft.addEventListener("click", () => {
         const arrowLeft = document.querySelector(".fa-arrow-left");
         arrowLeft.style.display = "none";

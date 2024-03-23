@@ -7,6 +7,8 @@ export function handleToken(token) {
     editionMode.style.display = null;
     const modificationLink = document.querySelector(".js-modal");
     modificationLink.style.display = null;
+    const filterButtons = document.querySelector(".buttons");
+    filterButtons.innerHTML = "";
 
     const headerNavLinkLogin = document.querySelector("#header-nav-link-login");
     headerNavLinkLogin.style.display = "none";

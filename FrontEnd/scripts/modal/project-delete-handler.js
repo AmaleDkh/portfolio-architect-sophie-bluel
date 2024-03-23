@@ -1,12 +1,12 @@
 import { fetchDeleteProject } from "../api-requests/api-requests.js";
 import { showProjects } from "../gallery/gallery.js";
-import { handleAlerts } from "../utils/alerts.js";
+import { showAlert } from "../utils/alerts.js";
 
 // Delete project
 
 export async function deleteProject(id) {
     try {
-        const result = await handleAlerts(
+        const result = await showAlert(
             "warning",
             "Êtes-vous sûr.e ?",
             "Le projet sera supprimé définitivement.",
@@ -32,7 +32,7 @@ export async function deleteProject(id) {
 
         showProjects(updatedListProjects);
 
-        await handleAlerts(
+        await showAlert(
             "success",
             "Projet supprimé",
             "",
@@ -45,7 +45,7 @@ export async function deleteProject(id) {
         );
 
     } catch {
-        handleAlerts(
+        showAlert(
             "error",
             "Échec lors de suppression",
             "Une erreur s'est produite. Veuillez réessayer.",

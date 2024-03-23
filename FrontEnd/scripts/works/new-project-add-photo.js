@@ -1,4 +1,4 @@
-import { handleAlerts } from "../utils/alerts.js";
+import { showAlert } from "../utils/alerts.js";
 
 // Add new photo
 
@@ -12,7 +12,7 @@ export function addNewPhoto() {
         }
 
         if (!(newPhotoSelected.type === "image/jpeg" || newPhotoSelected.type === "image/png")) {
-            handleAlerts(
+            showAlert(
                 "error",
                 "Échec lors du chargement",
                 "Le format de la photo n'est pas adapté. Veuillez réessayer.",
@@ -27,9 +27,9 @@ export function addNewPhoto() {
             return
         }
 
-        const maxSize = 4 * 1024 * 1014;
-        if (newPhotoSelected.size > maxSize) {
-            handleAlerts(
+        const imgMaxSize = 4 * 1024 * 1014;
+        if (newPhotoSelected.size > imgMaxSize) {
+            showAlert(
                 "error",
                 "Échec lors du chargement",
                 "La taille de la photo n'est pas adaptée. Veuillez réessayer.",

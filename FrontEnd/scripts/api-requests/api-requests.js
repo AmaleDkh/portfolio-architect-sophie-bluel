@@ -1,9 +1,17 @@
+const baseUrl = "http://localhost:5678/api/";
+
 // Get projects from API
 
 export async function fetchProjects() {
-    const url = 'http://localhost:5678/api/works';
+    const route = "works";
+    const url = baseUrl + route;
 
     const response = await fetch(url);
+
+    if (response.status !== 200) {
+        throw new Error;
+    }
+
     const responseProjects = await response.json();
 
     localStorage.setItem("stockedResponse", JSON.stringify(responseProjects));
@@ -14,9 +22,15 @@ export async function fetchProjects() {
 // Get categories from API
 
 export async function fetchCategories() {
-    const url = "http://localhost:5678/api/categories";
+    const route = "categories";
+    const url = baseUrl + route;
 
     const response = await fetch(url);
+
+    if (response.status !== 200) {
+        throw new Error;
+    }
+
     const responseCategories = await response.json();
 
     return responseCategories;
@@ -27,7 +41,8 @@ export async function fetchCategories() {
 export async function fetchNewProject(newProjectData) {
     const token = localStorage.getItem("accessToken");
 
-    const url = 'http://localhost:5678/api/works';
+    const route = "works";
+    const url = baseUrl + route;
 
     const response = await fetch(url, {
         method: 'POST',
@@ -35,7 +50,7 @@ export async function fetchNewProject(newProjectData) {
             'Authorization': `Bearer ${token}`,
         },
         body: newProjectData
-    })
+    });
 
     if (response.status !== 201) {
         throw new Error;
@@ -51,7 +66,8 @@ export async function fetchNewProject(newProjectData) {
 export async function fetchDeleteProject(id) {
     const token = localStorage.getItem("accessToken");
 
-    const url = `http://localhost:5678/api/works/${id}`;
+    const route = `works/${id}`;
+    const url = baseUrl + route;
 
     const response = await fetch(url, {
         method: "DELETE",
@@ -68,13 +84,14 @@ export async function fetchDeleteProject(id) {
 // Check login information in API
 
 export async function fetchLogin(email, password) {
-    const url = 'http://localhost:5678/api/users/login';
+    const route = "users/login";
+    const url = baseUrl + route;
 
     const response = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
-    })
+    });
 
     if (response.status !== 200) {
         throw new Error;

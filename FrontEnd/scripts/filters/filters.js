@@ -15,13 +15,13 @@ export async function showFilters(listProjects) {
 
     const categories = Array.from(setCategories);
 
-    const filterAll = document.createElement("button");
-    filterAll.innerText = "Tous";
-    filterAll.addEventListener("click", () => {
+    const filterAllProjects = document.createElement("button");
+    filterAllProjects.innerText = "Tous";
+    filterAllProjects.addEventListener("click", () => {
         showProjects(listProjects);
     })
 
-    filters.append(filterAll);
+    filters.append(filterAllProjects);
 
     for (let i = 0; i < categories.length; i++) {
         const buttonCategory = document.createElement("button");

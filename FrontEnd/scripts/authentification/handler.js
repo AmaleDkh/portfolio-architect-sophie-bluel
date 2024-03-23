@@ -1,6 +1,6 @@
 import { fetchLogin } from "../api-requests/api-requests.js";
-import { checkErrorsLogin, hideErrors, handleErrors } from "../utils/utils.js";
-import { handleAlerts } from "../utils/alerts.js";
+import { checkErrorsLogin, hideErrors, handleErrors } from "../utils/errors.js";
+import { showAlert } from "../utils/alerts.js";
 
 // Handle login on login page
 
@@ -39,10 +39,10 @@ function handleLogin() {
             window.location.href = 'index.html';
 
         } catch {
-            handleAlerts(
+            showAlert(
                 "error",
                 "Échec lors de la connexion",
-                "La combinaison utilisateur / mot de passe est peut-être incorrecte. Veuillez réessayer.",
+                "La combinaison email / mot de passe est peut-être incorrecte. Veuillez réessayer.",
                 false,
                 "",
                 false,

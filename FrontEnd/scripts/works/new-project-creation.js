@@ -1,14 +1,14 @@
 import { fetchNewProject } from "../api-requests/api-requests.js";
 import { showProjects } from "../gallery/gallery.js";
-import { showModalProjects } from "../modal/modal-gallery.js";
-import { checkErrorsNewProject, hideErrors, handleErrors } from "../utils/utils.js";
-import { handleAlerts } from "../utils/alerts.js";
+import { showModalProjects } from "../modal/gallery.js";
+import { checkErrorsNewProject, hideErrors, handleErrors } from "../utils/errors.js";
+import { showAlert } from "../utils/alerts.js";
 
 // Add new project
 
 export function addNewProject() {
-    const submitForm = document.querySelector(".modal-form");
-    submitForm.addEventListener("submit", async (e) => {
+    const modalForm = document.querySelector(".modal-form");
+    modalForm.addEventListener("submit", async (e) => {
         e.preventDefault();
 
         const titleNewProject = document.querySelector("#project-title").value;
@@ -35,7 +35,7 @@ export function addNewProject() {
         try {
             const responseNewProject = await fetchNewProject(newProjectData);
 
-            handleAlerts(
+            showAlert(
                 "success",
                 "Nouveau projet ajouté",
                 "",
@@ -50,7 +50,7 @@ export function addNewProject() {
             updateListProjects(responseNewProject);
 
         } catch {
-            handleAlerts(
+            showAlert(
                 "error",
                 "Échec lors de l'ajout",
                 "Une erreur s'est produite. Veuillez réessayer.",
