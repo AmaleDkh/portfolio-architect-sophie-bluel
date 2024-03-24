@@ -4,25 +4,25 @@ import { showFilters } from "../filters/filters.js";
 import { handleToken } from "../token/token.js";
 import { handleLogOut } from "../authentification/handler.js";
 import { openModal } from "../modal/display.js";
-import { showModalProjects } from "../modal/gallery.js";
+import { showProjectsInModal } from "../modal/gallery.js";
 import { showProjectCreationForm } from "../modal/project-creation-handler.js";
 
-document.addEventListener('DOMContentLoaded', async () => {
-    const listProjects = await fetchProjects();
+document.addEventListener("DOMContentLoaded", async () => {
+  const listProjects = await fetchProjects();
 
-    showProjects(listProjects);
+  showProjects(listProjects);
 
-    showFilters(listProjects);
+  showFilters(listProjects);
 
-    const token = localStorage.getItem("accessToken");
-    handleToken(token);
+  const token = localStorage.getItem("accessToken");
+  handleToken(token);
 
-    handleLogOut();
+  handleLogOut();
 
-    const linkOpenModal = document.querySelector(".js-modal");
-    linkOpenModal.addEventListener("click", openModal);
+  const linkOpenModal = document.querySelector(".js-modal");
+  linkOpenModal.addEventListener("click", openModal);
 
-    showModalProjects();
+  showProjectsInModal();
 
-    showProjectCreationForm();
-})
+  showProjectCreationForm();
+});

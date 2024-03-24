@@ -1,5 +1,5 @@
 import { handleLoginOnLoginPage } from "../authentification/handler.js";
 
-document.addEventListener('DOMContentLoaded', () => {
-    handleLoginOnLoginPage();
-})
+document.addEventListener("DOMContentLoaded", () => {
+  handleLoginOnLoginPage();
+});

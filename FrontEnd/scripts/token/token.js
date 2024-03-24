@@ -1,17 +1,19 @@
+// Handle token
+
 export function handleToken(token) {
-    if (!token) {
-        return
-    }
+  if (!token) {
+    return;
+  }
 
-    const editionMode = document.querySelector(".edition-mode");
-    editionMode.style.display = null;
-    const modificationLink = document.querySelector(".js-modal");
-    modificationLink.style.display = null;
-    const filterButtons = document.querySelector(".buttons");
-    filterButtons.innerHTML = "";
+  const editionMode = document.querySelector(".edition-mode");
+  editionMode.style.display = null;
+  const linkModification = document.querySelector(".js-modal");
+  linkModification.style.display = null;
+  const filterButtons = document.querySelector(".buttons");
+  filterButtons.innerHTML = "";
 
-    const headerNavLinkLogin = document.querySelector("#header-nav-link-login");
-    headerNavLinkLogin.style.display = "none";
-    const headerNavLinkLogout = document.querySelector("#header-nav-link-logout");
-    headerNavLinkLogout.style.display = null;
+  const linkLogin = document.querySelector("#link-login");
+  linkLogin.style.display = "none";
+  const linkLogout = document.querySelector("#link-logout");
+  linkLogout.style.display = null;
 }

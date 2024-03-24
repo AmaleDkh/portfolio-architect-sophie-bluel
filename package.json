@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "sweetalert2": "^11.10.6"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5"
   }
 }
