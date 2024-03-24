@@ -1,4 +1,4 @@
-import { deleteProject } from "./project-deletion-handler.js";
+import { deleteProject } from "./project-delete-handler.js";
 
 // Projects presented in modal
 
